@@ -10,12 +10,12 @@ var wateringPlants = function(plants, capacity) {
     let total = 0;
     
     for(let i = 0 ; i < plants.length ; i++) {
-        if(i === 0) {
-            currentCap = capacity - plants[i]
-            pointer = i;
-            total++;
-        } else {
-            // 충분한 물이 있을 경우
+//         if(i === 0) {
+//             currentCap = capacity - plants[i]
+//             pointer = i;
+//             total++;
+//         } else {
+//             // 충분한 물이 있을 경우
             
             if(plants[i] <= currentCap) {
                 currentCap = currentCap - plants[i]
@@ -35,6 +35,6 @@ var wateringPlants = function(plants, capacity) {
                 total += Math.abs(-1 - i)
             }
         }
-    }
+    // }
     return total
 };
