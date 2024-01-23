@@ -45,8 +45,6 @@ var minimumRefill = function(plants, capacityA, capacityB) {
         if(j - i === 1) {
             break
         }
-        
-        console.log(i, j, curCapA, curCapB)
     }
     return refillCount
 };
