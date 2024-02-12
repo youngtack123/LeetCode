@@ -4,19 +4,6 @@
  * @param {number} upper
  * @return {number}
  */
-// var countFairPairs = function(nums, lower, upper) {
-//     let answer = 0
-    
-//     for(let i = 0 ; i < nums.length ; i++) {
-//         for(let j = i + 1 ; j < nums.length ; j++) {
-            
-//             if(lower <= nums[i] + nums[j] && nums[i] + nums[j] <= upper) {
-//                 answer++
-//             }
-//         }
-//     }
-//     return answer
-// };
 
 var countFairPairs = function(nums, lower, upper) {
     let answer = 0;
