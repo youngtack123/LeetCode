@@ -6,20 +6,23 @@
 var mergeSimilarItems = function(items1, items2) {
     
     let map = new Map()
-    
     const tmp = [...items1, ...items2]
     
     for(let i = 0 ; i < tmp.length ; i++) {
         
-        if(map.get(tmp[i][0])) {
-            map.set(tmp[i][0], map.get(tmp[i][0]) + tmp[i][1])
+        let ithKey = tmp[i][0]
+        let ithValue = tmp[i][1]
+        let currValue = map.get(tmp[i][0])
+        
+        if(currValue) {
+            map.set(ithKey, currValue + ithValue)
         } else {
-            map.set(tmp[i][0], tmp[i][1])   
+            map.set(ithKey, ithValue)   
         }
     }
     
     let sortedArray = Array.from(map).sort((a, b) => {
-        if (a[0] < b[0]) return -1; // 오름차순 정렬
+        if (a[0] < b[0]) return -1;
         if (a[0] > b[0]) return 1;
         return 0;
     });
