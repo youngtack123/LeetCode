@@ -1,37 +1,17 @@
-/**
- * @param {string[][]} paths
- * @return {string}
- */
 var destCity = function(paths) {
+    const outgoingCities = new Set();
+    const destinationCities = new Set();
     
-    let map = new Map()
-    let destinations = []
+    // 출발지와 도착지를 분리하여 Set에 추가합니다.
+    paths.forEach(([source, destination]) => {
+        outgoingCities.add(source);
+        destinationCities.add(destination);
+    });
     
-    
-    for(let i = 0 ; i < paths.length ; i++) {
-        map.set(paths[i][0], paths[i][1])
-        destinations.push(paths[i][1])
+    // 도착지에서 출발하지 않는 도시를 찾습니다.
+    for (const city of destinationCities) {
+        if (!outgoingCities.has(city)) {
+            return city;
+        }
     }
-    
-    let answerMap = new Map()
-    
-    destinations.forEach(destination => {
-        if(map.get(destination)) {
-            answerMap.set(destination, true)
-        } else {
-            answerMap.set(destination, false)
-        }
-    })
-    
-    const res = Array.from(answerMap)
-    
-    let tmp = ''
-    
-    res.forEach(el => {
-        if(el[1] === false) {
-            tmp = el[0]
-        }
-    })
-    
-    return tmp
 };
