@@ -60,7 +60,8 @@ var largestWordCount = function(messages, senders) {
     
     // Find the sender with the largest word count
     for (const [sender, count] of wordCounts.entries()) {
-        if (count > maxCount || (count === maxCount && sender > maxSender)) {
+        // KEY POINT: strings can be compared lexicographically using relational operators
+        if (count > maxCount || (count === maxCount && sender > maxSender)) { 
             maxCount = count;
             maxSender = sender;
         }
