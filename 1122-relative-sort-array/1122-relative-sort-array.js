@@ -4,21 +4,31 @@
  * @return {number[]}
  */
 var relativeSortArray = function(arr1, arr2) {
+    const map = new Map();
+    const result = [];
     
-    let tmp1 = []
+    // Count the frequency of elements in arr1
+    for (const num of arr1) {
+        map.set(num, (map.get(num) || 0) + 1);
+    }
     
-    for(let i = 0 ; i < arr2.length ; i++) {
-        for(let j = 0 ; j < arr1.length ; j++) {
-            const target = arr2[i]
-            const element = arr1[j]
-            
-            if(element === target) {
-                tmp1.push(element)
-            }
+    // Add elements from arr1 that appear in arr2 according to their relative order
+    for (const num of arr2) {
+        const count = map.get(num);
+        for (let i = 0; i < count; i++) {
+            result.push(num);
+        }
+        map.delete(num); // Remove the element from the map
+    }
+    
+    // Add remaining elements from arr1 in ascending order
+    const remaining = [...map.keys()].sort((a, b) => a - b);
+    for (const num of remaining) {
+        const count = map.get(num);
+        for (let i = 0; i < count; i++) {
+            result.push(num);
         }
     }
     
-    const filtered = arr1.filter(el => !arr2.includes(el)).sort((a, b) => a - b)
-    
-    return tmp1.concat(filtered)
+    return result;
 };
