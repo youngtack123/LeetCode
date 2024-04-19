@@ -20,7 +20,7 @@ var relativeSortArray = function(arr1, arr2) {
         }
         map.delete(num); // Remove the element from the map
     }
-    
+        
     // Add remaining elements from arr1 in ascending order
     const remaining = [...map.keys()].sort((a, b) => a - b);
     for (const num of remaining) {
