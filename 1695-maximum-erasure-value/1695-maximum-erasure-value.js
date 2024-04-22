@@ -1,3 +1,7 @@
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
 var maximumUniqueSubarray = function(nums) {
     let maxScore = 0;
     let currentScore = 0;
