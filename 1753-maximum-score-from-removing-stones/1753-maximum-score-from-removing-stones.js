@@ -5,18 +5,18 @@
  * @return {number}
  */
 function maximumScore(a, b, c) {
-    const piles = [a, b, c].sort((a, b) => a - b);
-
-    let score = 0;
-    // Repeat until there are fewer than two non-empty piles
-    while (piles[1] > 0 && piles[2] > 0) {
-        // Take one stone from the two largest piles
-        score++;
-        piles[1]--;
-        piles[2]--;
-        // Sort the piles again
-        piles.sort((x, y) => x - y);
+    const piles = [a, b, c].sort((a , b) => b - a)
+    
+    let score = 0
+    
+    while(piles[0] > 0 && piles[1] > 0) {
+        
+        piles[0]--
+        piles[1]--
+        score++
+        
+        piles.sort((a, b) => b - a)
     }
-
-    return score;
+    
+    return score
 }
