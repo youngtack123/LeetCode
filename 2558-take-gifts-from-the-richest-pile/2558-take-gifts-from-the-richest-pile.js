@@ -3,19 +3,10 @@
  * @param {number} k
  * @return {number}
  */
-// var pickGifts = function(gifts, k) {
-    
-//     for(let i = 0 ; i < k ; i++) {
-//         const max = Math.max(...gifts)
-//         const sqrt = Math.floor(Math.sqrt(max))
-        
-//         [sqrt, ...gifts.filter(num => num !== 100)];
-//     }
-// };
 
 var pickGifts = function(gifts, k) {
     for (let i = 0; i < k; i++) {
-        const maxIndex = gifts.indexOf(Math.max.apply(Math, gifts)); // 가장 큰 값의 인덱스 찾기
+        const maxIndex = gifts.indexOf(Math.max(...gifts)); // 가장 큰 값의 인덱스 찾기
         const maxSqrt = Math.floor(Math.sqrt(gifts[maxIndex])); // 가장 큰 값의 제곱근 계산
         
         gifts.splice(maxIndex, 1); // 가장 큰 값 제거
