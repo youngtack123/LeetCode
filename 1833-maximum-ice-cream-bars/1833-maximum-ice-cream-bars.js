@@ -13,6 +13,8 @@ var maxIceCream = function(costs, coins) {
         
         if(0 <= coins) {
             answer++
+        } else {
+            break
         }
     }
     
