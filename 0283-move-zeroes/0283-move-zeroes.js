@@ -10,16 +10,12 @@ var moveZeroes = function(nums) {
     while(high <= nums.length - 1) {
         // nums[low]가 0 인경우
         if(nums[low] === 0) {
-            // nums[high]가 0인 경우
-            if(nums[high] === 0) {
-                high++
-            }
-            // 0이 아닌경우
-            else {
+            
+            if(nums[high] !== 0) {
                 [nums[low], nums[high]] = [nums[high], nums[low]]
                 low++
-                high++
             }
+            high++
         }
         // 0이 아닌경우
         else {
