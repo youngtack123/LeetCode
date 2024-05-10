@@ -3,22 +3,26 @@
  * @return {number}
  */
 var lengthOfLongestSubstring = function(s) {
-    let left = 0;
-    let right = 0;
-    let maxSubLength = 0;
-    const hashSet = new Set()
     
-    while(right < s.length){
-        // 중복되지 않는 경우
-        if(!hashSet.has(s[right])){
-            hashSet.add(s[right]);
-            maxSubLength = Math.max(maxSubLength, right - left + 1);
-            right++;
-        }
-        else{
-            hashSet.delete(s[left]);
+    if(s.length === 0) return 0
+    if(s.length === 1) return 1
+    
+    let left = 0
+    let right = 0
+    let maxLength = -Infinity
+    const set = new Set()
+    
+    while(right < s.length) {
+        
+        if(!set.has(s[right])) {
+            set.add(s[right])
+            maxLength = Math.max(maxLength, right - left + 1)
+            right++
+        } else {
+            set.delete(s[left])
             left++
         }
     }
-    return maxSubLength;
+    
+    return maxLength
 };
