@@ -28,39 +28,36 @@
 //     return answer
 // };
 
-var findAnagrams = function(s, p) {
-
-    let map = new Map();
-    let left = 0;
-    let right = 0;
-    let count = p.length;
-
-    let Arr = new Array();
-
-    for (let i=0; i<p.length; i++) {
-        map.set(p[i], (map.get(p[i]) || 0) + 1);
+const findAnagrams = (s, p) => {
+    
+    const output = [];
+    const neededChars = {};
+    
+    for (let char of p) {
+        if (char in neededChars) {
+            neededChars[char]++
+        } else neededChars[char] = 1
     }
-
+    
+    let left = 0;
+    let right = 0; 
+    let count = p.length 
+    
     while (right < s.length) {
         
-        if (map.get(s[right]) > 0) {
-            count--;
-        }
+        if (neededChars[s[right]] > 0) count--;
         
-        map.set(s[right], (map.get(s[right]) || 0) - 1);
-
-        if (count === 0) Arr.push(left);
-
-        if((right - left + 1) >= p.length) {
-            if (map.get(s[left]) >= 0) {
-                count++;
-            }
+        neededChars[s[right]]--;
+        right++;
+        
+        if (count === 0) output.push(left);
+        
+        if (right - left == p.length) {
+            if (neededChars[s[left]] >= 0) count++;
             
-            map.set(s[left], (map.get(s[left]) || 0) + 1);
+            neededChars[s[left]]++;
             left++;
         }
-
-        right++;
     }
-    return Arr;
+    return output;
 };
