@@ -11,7 +11,7 @@ var checkInclusion = function(s1, s2) {
     let needed = {}
     
     for (let char of s1) {
-        char in needed ? needed[char]++ : needed[char] = 1
+        needed[char] = (needed[char] || 0) + 1
     }
     
     while(right < s2.length) {
