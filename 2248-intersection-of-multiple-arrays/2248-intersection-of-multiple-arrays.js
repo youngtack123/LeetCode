@@ -3,26 +3,15 @@
  * @return {number[]}
  */
 var intersection = function(nums) {
+    const result = []
     
-    let map = new Map()
-    
-    for(let num of nums[0]) {
-        map.set(num, (map.get(num) || 0) + 1)
-    }
-    
-    let added = []
-    
-    for(let i = 1 ; i < nums.length ; i++) {
-        for(let num of nums[i]) {
-            if(map.has(num)) {
-                map.set(num, map.get(num) + 1)
-            }
+    for(let i = 0 ; i < nums[0].length ; i++) {
+        const target = nums[0][i]
+        
+        if(nums.every((arr) => arr.includes(target))) {
+            result.push(target)
         }
     }
     
-    const mapArr = Array.from(map).filter((el) => el[1] == nums.length).map((el) => el[0])
-    
-    return mapArr.sort((a, b) => a - b)
-    
-    
-};
+    return result.sort((a, b) => a - b)
+}
